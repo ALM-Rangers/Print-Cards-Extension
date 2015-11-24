@@ -26,8 +26,8 @@ Install the Extension in your account. Go to the backlog and click the print but
 ### Find out more
 Check out the [Print Cards journal](http://@), where you can find out how the extension was created and some of the bumps along the way.
 
-![](https://github.com/ALM-Rangers/VSO-Extension-FolderManagement/blob/master/media/FolderManagementExtension.PNG)
-![](https://github.com/ALM-Rangers/VSO-Extension-FolderManagement/blob/master/media/FolderManagementExtension_Dialog.PNG)
+![](https://github.com/ALM-Rangers/VSTS-Extension-PrintCards/blob/master/media/screenshot1.jpg)
+![](https://github.com/ALM-Rangers/VSTS-Extension-PrintCards/blob/master/media/screenshot2.jpg)
 
 Install the extension [here](https://marketplace.visualstudio.com/items/ms-devlabs.PrintCards).
 

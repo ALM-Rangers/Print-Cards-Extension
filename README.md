@@ -1,10 +1,8 @@
 # Print Cards
 ### What
-
 This extension adds a print option to the backlog which allows you to print the cards for use on a physical scrum board.
 
 ### Why
-
 Having a physical scrum board can allow those inside and outside the team a quick view location for the status of the work and the act of moving physical cards has a more real and tangible feel than just clicking on a screen.
 
 ### Steps
@@ -16,20 +14,19 @@ Having a physical scrum board can allow those inside and outside the team a quic
 8. Install the extension into your Visual Studio Team Services account (see https://www.visualstudio.com/en-us/integrate/extensions/publish/overview)
 
 ### Prerequisites
-
 A Visual Studio Team Services project and some work items.
 
 ### Usage
-
 Install the Extension in your account. Go to the backlog and click the print button (in the top right corner of the screen).
 
 ### Find out more
 Check out the [Print Cards journal](http://@), where you can find out how the extension was created and some of the bumps along the way.
 
+Install the extension [here](https://marketplace.visualstudio.com/items/ms-devlabs.PrintCards).
+
 ![](https://github.com/ALM-Rangers/VSTS-Extension-PrintCards/blob/master/media/screenshot1.jpg)
 ![](https://github.com/ALM-Rangers/VSTS-Extension-PrintCards/blob/master/media/screenshot2.jpg)
 
-Install the extension [here](https://marketplace.visualstudio.com/items/ms-devlabs.PrintCards).
 
 <table>
   <tr>

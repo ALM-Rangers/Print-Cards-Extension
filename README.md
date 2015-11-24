@@ -22,3 +22,22 @@ A Visual Studio Team Services project and some work items.
 ### Usage
 
 Install the Extension in your account. Go to the backlog and click the print button (in the top right corner of the screen).
+
+### Find out more
+Check out the [Print Cards journal](http://@), where you can find out how the extension was created and some of the bumps along the way.
+
+![](https://github.com/ALM-Rangers/VSO-Extension-FolderManagement/blob/master/media/FolderManagementExtension.PNG)
+![](https://github.com/ALM-Rangers/VSO-Extension-FolderManagement/blob/master/media/FolderManagementExtension_Dialog.PNG)
+
+Install the extension [here](https://marketplace.visualstudio.com/items/ms-devlabs.PrintCards).
+
+<table>
+  <tr>
+    <td>
+      <img src="https://github.com/ALM-Rangers/VSTS-Extension-PrintCards/blob/master/media/VSALMLogo.png"></img>
+    </td>
+    <td>
+      The Visual Studio ALM Rangers provide professional guidance, practical experience and gap-filling solutions to the ALM community. Visit <a href="http://aka.ms/vsarblog">aka.ms/vsarblog</a> to find out more.
+    </td>
+  </tr>
+</table>

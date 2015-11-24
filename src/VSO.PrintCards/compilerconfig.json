@@ -1,0 +1,10 @@
+﻿[
+  {
+    "outputFile": "css/print.css",
+    "inputFile": "css/print.less"
+  },
+  {
+    "outputFile": "css/firefoxPrint.css",
+    "inputFile": "css/firefoxPrint.less"
+  }
+]

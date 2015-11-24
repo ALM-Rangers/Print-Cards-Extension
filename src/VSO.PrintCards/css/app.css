@@ -1,0 +1,57 @@
+﻿/*---------------------------------------------------------------------
+ <copyright file="app.css">
+    This code is licensed under the MIT License.
+    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF
+    ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
+    TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A
+    PARTICULAR PURPOSE AND NONINFRINGEMENT.
+ </copyright>
+ <summary>Styling for the extension.</summary>
+---------------------------------------------------------------------*/
+body {
+    font-family: 'Segoe UI',Tahoma,Arial,Verdana;
+    font-size: 12px;
+    padding: 0;
+    margin: 0;
+    background-color: white;
+}
+
+#cards-container-outer {
+    position: relative;
+    padding: 0;
+    margin: 0;
+    overflow: auto;
+    height: 90%;
+}
+
+    #cards-container-outer #cards-container {
+        position: relative;
+        text-align: left;
+    }
+
+.clear {
+    clear: both;
+}
+
+#cards-container-outer #cards-container .card {
+    float: left;
+    margin-right: 5px;
+    margin-bottom: 5px;
+}
+
+#print-container {
+    border-top: solid 1px #F3F3F3;
+    height: 50px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    margin-left: -10px;
+    display: none;
+    background-color: white;
+}
+
+    #print-container button {
+        position: fixed;
+        right: 20px;
+        bottom: 10px;
+    }

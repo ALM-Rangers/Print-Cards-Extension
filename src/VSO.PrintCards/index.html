@@ -1,0 +1,50 @@
+﻿<!-----------------------------------------------------------------------
+<copyright file="index.html">
+    This code is licensed under the MIT License.
+    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF
+    ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
+    TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A
+    PARTICULAR PURPOSE AND NONINFRINGEMENT.
+</copyright>
+<summary>
+    The content of this file is loaded into the extensions dialog.
+    This file initializes the java script that renders the cards to be printed.
+</summary>
+----------------------------------------------------------------------->
+
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Print Cards</title>
+    <link rel="stylesheet" href="css/app.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="css/print.css" type="text/css" media="print" />
+    <script src="sdk/Scripts/VSS.SDK.js"></script>
+</head>
+<body>
+
+    <script type="text/javascript">
+        // Initialize the VSS sdk
+        VSS.init({
+            setupModuleLoader: true,
+            moduleLoaderConfig: {
+                paths: {
+                    "Scripts": "scripts"
+                }
+            }
+        });
+
+        // Wait for the SDK to be initialized
+        VSS.ready(function () {
+            VSS.require(["Scripts/app"], function (app) { });
+        });
+    </script>
+    <div id="message-container">initializing...</div>
+    <div id="cards-container-outer" class="section-to-print">
+        <div id="cards-container"></div>
+    </div>
+    <div id="print-container">
+        <button id="print-button">Print</button>
+        <div style="clear:both;"></div>
+    </div>
+</body>
+</html>

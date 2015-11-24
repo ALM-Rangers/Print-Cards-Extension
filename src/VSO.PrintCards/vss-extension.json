@@ -1,0 +1,106 @@
+﻿{
+    "manifestVersion": 1,
+    "id": "PrintCards",
+    "version": "1.1.1",
+    "name": "Print Cards",
+    "description": "Print cards from your backlog for use on a physical scrum board.",
+    "publisher": "ms-devlabs",
+    "public": true,
+    "scopes": [ "vso.work" ],
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+        }
+    ],
+    "files": [
+        {
+            "path": "scripts/app.js",
+            "contentType": "text/javascript",
+            "addressable": true
+        },
+        {
+            "path": "scripts/main.js",
+            "contentType": "text/javascript",
+            "addressable": true
+        },
+        {
+            "path": "images",
+            "addressable": true
+        },
+        {
+            "path": "css/app.css",
+            "addressable": true
+        },
+        {
+            "path": "css/print.css",
+            "addressable": true
+        },
+        {
+            "path": "index.html",
+            "addressable": true
+        },
+        {
+            "path": "main.html",
+            "addressable": true
+        },
+        {
+            "path": "sdk/scripts/VSS.SDK.js",
+            "contentType": "text/javascript",
+            "addressable": true
+        }
+    ],
+    "icons": {
+        "default": "images/print-cards-icon.png"
+    },
+    "tags": [
+        "Print",
+        "Backlog"
+    ],
+    "categories": [
+        "Plan and track"
+    ],
+    "content": {
+        "details": {
+            "path": "README.md"
+        },
+        "license": {
+            "path": "LICENCE-TERMS.md"
+        }
+    },
+    "branding": {
+      "color": "rgb(51, 65, 133)",
+      "theme": "dark"
+    },
+    "links": {
+        "support": {
+            "uri": "http://aka.ms/vsarcontact"
+        }
+    },
+    "contributions": [
+        {
+            "id": "openPrintCards",
+            "type": "ms.vss-web.action",
+            "description": "Print cards from your backlog for a physical scrum board.",
+            "targets": [
+                "ms.vss-work-web.backlog-board-pivot-filter-menu"
+            ],
+            "properties": {
+                "text": "",
+                "title": "Print cards from your backlog for a physical scrum board",
+                "icon": "images/print-cards-icon-small.png",
+                "group": "actions",
+                "uri": "main.html",
+                "registeredObjectId": "openPrintCards"
+            }
+        },
+        {
+            "id": "indexPage",
+            "type": "ms.vss-web.control",
+            "description": "The main page for your Print Cards.",
+            "targets": [ ],
+            "properties": {
+                "uri": "index.html"
+            }
+        }
+    ]
+}

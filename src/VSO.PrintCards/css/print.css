@@ -1,0 +1,48 @@
+﻿/*---------------------------------------------------------------------
+ <copyright file="print.css">
+    This code is licensed under the MIT License.
+    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF
+    ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
+    TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A
+    PARTICULAR PURPOSE AND NONINFRINGEMENT.
+ </copyright>
+ <summary>Styling for the extension.</summary>
+---------------------------------------------------------------------*/
+body {
+  font-family: 'Segoe UI', Tahoma, Arial, Verdana;
+  padding: 0;
+  background-color: white;
+  margin-right: -2mm;
+  margin-top: 0;
+  margin-left: -5mm;
+  margin-bottom: 0;
+  zoom: 100%;
+}
+body * {
+  visibility: hidden;
+}
+.section-to-print,
+.section-to-print * {
+  visibility: visible;
+}
+.section-to-print {
+  clear: both;
+  float: none;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+#cards-container-outer {
+  padding: 0;
+}
+#cards-container-outer #cards-container {
+  text-align: left;
+}
+#cards-container-outer #cards-container .card {
+  float: left;
+  margin-right: 2mm;
+  margin-bottom: 2mm;
+}

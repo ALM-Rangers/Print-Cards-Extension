@@ -20,7 +20,7 @@ A Visual Studio Team Services project and some work items.
 Install the Extension in your account. Go to the backlog and click the print button (in the top right corner of the screen).
 
 ### Find out more
-Check out the [Print Cards journal](http://@), where you can find out how the extension was created and some of the bumps along the way.
+Check out the [Print Cards journal](https://github.com/ALM-Rangers/VSTS-Extension-PrintCards/blob/master/VSTS%20extension%20journal.md), where you can find out how the extension was created and some of the bumps along the way.
 
 Install the extension [here](https://marketplace.visualstudio.com/items/ms-devlabs.PrintCards).
 

@@ -24,14 +24,14 @@ Check out the [Print Cards journal](http://@), where you can find out how the ex
 
 Install the extension [here](https://marketplace.visualstudio.com/items/ms-devlabs.PrintCards).
 
-![](https://github.com/ALM-Rangers/VSTS-Extension-PrintCards/blob/master/media/screenshot1.jpg)
-![](https://github.com/ALM-Rangers/VSTS-Extension-PrintCards/blob/master/media/screenshot2.jpg)
+![](https://github.com/ALM-Rangers/VSTS-Extension-PrintCards/blob/master/_img/screenshot1.jpg)
+![](https://github.com/ALM-Rangers/VSTS-Extension-PrintCards/blob/master/_img/screenshot2.jpg)
 
 
 <table>
   <tr>
     <td>
-      <img src="https://github.com/ALM-Rangers/VSTS-Extension-PrintCards/blob/master/media/VSALMLogo.png"></img>
+      <img src="https://github.com/ALM-Rangers/VSTS-Extension-PrintCards/blob/master/_img/VSALMLogo.png"></img>
     </td>
     <td>
       The Visual Studio ALM Rangers provide professional guidance, practical experience and gap-filling solutions to the ALM community. Visit <a href="http://aka.ms/vsarblog">aka.ms/vsarblog</a> to find out more.

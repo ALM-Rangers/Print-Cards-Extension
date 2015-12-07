@@ -121,6 +121,7 @@ Francis implements continuous builds, tests and deployment.
 ![](./_img/build-definition.png)
 
 3.  To enable a gated build, click on “Triggers”, select “Continuous Integration”, then select the checkbox for “Batch changes”.
+
 ![](./_img/gated-build.png)
 
 

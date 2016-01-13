@@ -3,3 +3,4 @@ obj/
 bin/
 /src/VSO.PrintCards/scripts/*.js
 /src/VSO.PrintCards/scripts/*.js.map
+*.user

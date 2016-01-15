@@ -11,6 +11,7 @@
 
 /// <reference path='ref/VSS.d.ts' />
 /// <reference path="ref/jquery.d.ts" />
+/// <reference path="ref/qrcode.d.ts" />
 
 import VSS_Service = require("VSS/Service");
 import TFS_Core_Contracts = require("TFS/Core/Contracts");
@@ -22,7 +23,6 @@ import TFS_Wit_WebApi = require("TFS/WorkItemTracking/RestClient");
 module canvasCard {
     var lineHeight = 20;
     var titleLineHeight = 20;
-    var cardIndent = 30;
     var padding = 2;
 
     function wrapText(context, text, x, y, maxWidth): number {
@@ -64,6 +64,7 @@ module canvasCard {
     }
 
     export function drawCards(testData: Array<any>, initialMaxHeight: number, largestId: number, renderExtras: boolean): any {
+        var minCardHeight = 150;
         var cardWidth = 300;
         
         ///* this is just to deal with inconsistent printer margins that each browser uses */
@@ -75,6 +76,7 @@ module canvasCard {
         var cards = [];
         var maxHeight = initialMaxHeight;
         testData.forEach(item => {
+            var cardIndent = 30;
             var cardElement = <HTMLDivElement>document.createElement("div");
             cardElement.classList.add("card");
             var canvas = document.createElement("canvas");
@@ -90,6 +92,14 @@ module canvasCard {
             context.font = "14px Segoe UI";
             nexty += lineHeight + 15;
             context.fillText(item.assignedTo, cardIndent + padding, nexty);
+
+            var preqrCodeNextY = nexty;
+            nexty += lineHeight;
+            var qrCodeSize = 80;
+            qrCodeCanvas.generate(item.cardUrl, nexty-10, cardIndent, qrCodeSize-5, canvas);            
+
+            nexty = preqrCodeNextY;
+            cardIndent += qrCodeSize;
 
             context.font = "12px Segoe UI";
             item.fields.forEach(element => {
@@ -128,6 +138,7 @@ module canvasCard {
                 drawLine(context, 0, 0, cardWidth, 0);
                 drawLine(context, cardWidth, maxHeight, cardWidth, 0);
                 drawLine(context, cardWidth, maxHeight, 0, maxHeight);
+                cardIndent -= qrCodeSize;
                 drawLine(context, cardIndent - 5, 0, cardIndent - 5, maxHeight);
                 context.save();
                 context.font = "12px Segoe UI";
@@ -140,6 +151,10 @@ module canvasCard {
 
             cards.push(cardElement);
         });
+
+        if (maxHeight < minCardHeight) {
+            maxHeight = minCardHeight;
+        }
 
         return {
             cards: cards,
@@ -156,6 +171,7 @@ module AlmRangers.VsoExtensions {
         type: string;
         fields: Array<any>;
         tags: Array<string>;
+        cardUrl: string;
     }
 
     export class HelperFunctions {
@@ -304,7 +320,8 @@ module AlmRangers.VsoExtensions {
                                                     title: this.getWorkItemField(workItem, "System.Title"),
                                                     type: workItemType,
                                                     fields: fields,
-                                                    tags: tags
+                                                    tags: tags,
+                                                    cardUrl: workItem.url
                                                 });
 
                                                 if (+id > largestId) {

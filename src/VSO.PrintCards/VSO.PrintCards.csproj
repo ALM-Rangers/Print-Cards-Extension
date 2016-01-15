@@ -54,6 +54,7 @@
     <TypeScriptCompile Include="scripts\ref\jquery.d.ts" />
     <TypeScriptCompile Include="scripts\ref\knockout.d.ts" />
     <TypeScriptCompile Include="scripts\ref\q.d.ts" />
+    <TypeScriptCompile Include="scripts\ref\qrcode.d.ts" />
     <TypeScriptCompile Include="scripts\ref\VSS.d.ts" />
   </ItemGroup>
   <ItemGroup>

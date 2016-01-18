@@ -65,10 +65,9 @@ module canvasCard {
 
     export function drawCards(testData: Array<any>, initialMaxHeight: number, largestId: number, renderExtras: boolean): any {
         var minCardHeight = 150;
-        var cardWidth = 300;
-        
+        var initialCardWidth = 300;
         ///* this is just to deal with inconsistent printer margins that each browser uses */
-        if (navigator.userAgent.indexOf("Firefox/") > -1) { cardWidth = 325; }
+        if (navigator.userAgent.indexOf("Firefox/") > -1) { initialCardWidth = 325; }
         //if (navigator.userAgent.indexOf("Trident/") > -1) { cardWidth = 300; }
         //if (navigator.userAgent.indexOf("Chrome/") > -1) { cardWidth = 325; }
         //if (navigator.userAgent.indexOf("Edge/") > -1) { cardWidth = 300; } /* edge must be last since it also tries to trick us into thinking it is chrome */
@@ -76,43 +75,71 @@ module canvasCard {
         var cards = [];
         var maxHeight = initialMaxHeight;
         testData.forEach(item => {
+            var cardWidth = initialCardWidth;
+            var cardSpace = cardWidth;
             var cardIndent = 30;
+            var adjustedWidthForQRCode = false;
             var cardElement = <HTMLDivElement>document.createElement("div");
             cardElement.classList.add("card");
             var canvas = document.createElement("canvas");
-            canvas.width = cardWidth;
+            canvas.width = cardSpace;
             canvas.height = initialMaxHeight;
             var context = canvas.getContext("2d");
             context.font = "bold 14px Segoe UI";
             var offset = context.measureText(largestId.toString()).width + 5;
             context.fillText(item.id, cardIndent + padding, 20 + padding);
             var title = trim(item.title);
-            var nexty = wrapText(context, title, cardIndent + padding + offset, 20 + padding, cardWidth - (cardIndent + (padding * 2) + offset));
+            var nexty = wrapText(context, title, cardIndent + padding + offset, 20 + padding, cardSpace - (cardIndent + (padding * 2) + offset));
 
             context.font = "14px Segoe UI";
             nexty += lineHeight + 15;
             context.fillText(item.assignedTo, cardIndent + padding, nexty);
 
-            var preqrCodeNextY = nexty;
-            nexty += lineHeight;
             var qrCodeSize = 80;
-            qrCodeCanvas.generate(item.cardUrl, nexty-10, cardIndent, qrCodeSize-5, canvas);            
-
-            nexty = preqrCodeNextY;
-            cardIndent += qrCodeSize;
+            var qrCodeLeft = cardSpace - qrCodeSize - 5;
+            var qrCodeTop = maxHeight - qrCodeSize - 5;
+            qrCodeCanvas.generate(item.cardUrl, qrCodeTop, qrCodeLeft, qrCodeSize - 5, canvas);
 
             context.font = "12px Segoe UI";
+            var keyWidth = 0;
+            item.fields.forEach(element => {
+                var metrics = context.measureText(element.title);
+                if (metrics.width > keyWidth) {
+                    keyWidth = metrics.width;
+                }
+            });
+
+            keyWidth += 10;
+
             item.fields.forEach(element => {
                 nexty += lineHeight;
+                if (!adjustedWidthForQRCode && nexty >= qrCodeTop) {
+                    cardSpace -= qrCodeSize - 5;
+                    adjustedWidthForQRCode = true;
+                }
+
                 context.fillText(element.title, cardIndent + padding, nexty);
-                context.fillText(element.value, cardIndent + padding + 125, nexty);
+                var valueStart = cardIndent + padding + keyWidth;
+                var metrics = context.measureText(element.value);
+                if (valueStart + metrics.width > qrCodeLeft && nexty >= qrCodeTop) {
+                    nexty += lineHeight;
+                    valueStart = qrCodeLeft - 5 - metrics.width;
+                }
+
+                context.fillText(element.value, valueStart, nexty);
             });
 
             nexty += lineHeight;
             var nextx = cardIndent + padding;
             item.tags.forEach(element => {
                 var metrics = context.measureText(element);
-                if (metrics.width + nextx + 5 > cardWidth) {
+                if (!adjustedWidthForQRCode && nexty >= qrCodeTop - 4) {
+                    cardSpace -= qrCodeSize - 5;
+                    adjustedWidthForQRCode = true;
+                }
+
+                var tagPositionEnd = metrics.width + nextx + 5;
+                if (tagPositionEnd > cardSpace) {
                     nexty += lineHeight + 4;
                     nextx = cardIndent + padding;
                 }
@@ -138,7 +165,6 @@ module canvasCard {
                 drawLine(context, 0, 0, cardWidth, 0);
                 drawLine(context, cardWidth, maxHeight, cardWidth, 0);
                 drawLine(context, cardWidth, maxHeight, 0, maxHeight);
-                cardIndent -= qrCodeSize;
                 drawLine(context, cardIndent - 5, 0, cardIndent - 5, maxHeight);
                 context.save();
                 context.font = "12px Segoe UI";
@@ -214,6 +240,7 @@ module AlmRangers.VsoExtensions {
         witClient: TFS_Wit_WebApi.WorkItemTrackingHttpClient;
 
         constructor(cardsContainer: HTMLDivElement, messageContainer: HTMLDivElement, printContainer: HTMLDivElement) {
+            this.updateMessageContainer("Loading...");
             this.cardsContainer = cardsContainer;
             this.messageContainer = messageContainer;
             this.printContainer = printContainer;
@@ -252,7 +279,7 @@ module AlmRangers.VsoExtensions {
 
         private getBoardWorkItems(boardId: string) {
             var that = this;
-            that.updateMessageContainer("loading...");
+            that.updateMessageContainer("Loading work items...");
 
             if (boardId == null || boardId === undefined || boardId.length === 0) {
                 HelperFunctions.showWarning("parameter 'boardId' is missing!");
@@ -266,22 +293,22 @@ module AlmRangers.VsoExtensions {
             teamContext.team = webContext.team.name;
             teamContext.projectId = webContext.project.id;
             teamContext.teamId = webContext.team.id;
-            that.updateMessageContainer("loading board card settings...");
+            that.updateMessageContainer("Loading board card settings...");
             client.getBoardCardSettings(teamContext, boardId).then((boardSettings) => {
-                that.updateMessageContainer("loading team settings...");
+                that.updateMessageContainer("Loading team settings...");
                 client.getTeamSettings(teamContext).then((teamSettings) => {
-                    that.updateMessageContainer("loading backlog iteration details...");
+                    that.updateMessageContainer("Loading backlog iteration details...");
                     client.getTeamIteration(teamContext, teamSettings.backlogIteration.id).then((backlogIterationDetails) => {
-                        that.updateMessageContainer("loading team field values...");
+                        that.updateMessageContainer("Loading team field values...");
                         client.getTeamFieldValues(teamContext).then((teamFieldValues) => {
                             that.getWorkItemIDs(teamContext, boardSettings, backlogIterationDetails, teamFieldValues,
                                 (workItemIDs: Array<number>) => {
                                     if (workItemIDs.length === 0) {
-                                        alert("no work items found!");
+                                        alert("No work items found!");
                                         return;
                                     }
 
-                                    that.updateMessageContainer("loading work item data...");
+                                    that.updateMessageContainer("Loading work item data...");
                                     that.witClient.getFields().then((systemFields) => {
                                         var boardSettingFields = that.getCardFields("*", boardSettings);
                                         that.witClient.getWorkItems(workItemIDs, boardSettingFields).then((workItems) => {
@@ -481,6 +508,7 @@ module AlmRangers.VsoExtensions {
         }
     }
 }
+
 var boardId = VSS.getConfiguration().properties["id"];
 var cardsContainer = <HTMLDivElement>document.getElementById("cards-container");
 var messageContainer = <HTMLDivElement>document.getElementById("message-container");

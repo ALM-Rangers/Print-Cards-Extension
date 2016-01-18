@@ -1,3 +1,7 @@
 src/.vs
 obj/
 bin/
+/src/VSO.PrintCards/scripts/*.js
+/src/VSO.PrintCards/scripts/*.js.map
+*.user
+!/src/VSO.PrintCards/scripts/qrcode.js

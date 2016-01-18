@@ -13,7 +13,7 @@ body {
     font-size: 12px;
     padding: 0;
     margin: 0;
-    background-color: white;
+    background-color: #fcfcfc;
 }
 
 #cards-container-outer {
@@ -47,7 +47,7 @@ body {
     width: 100%;
     margin-left: -10px;
     display: none;
-    background-color: white;
+    background-color: #fcfcfc;
 }
 
     #print-container button {

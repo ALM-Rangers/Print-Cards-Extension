@@ -5,3 +5,4 @@ bin/
 /src/VSO.PrintCards/scripts/*.js.map
 *.user
 !/src/VSO.PrintCards/scripts/qrcode.js
+/update.bat

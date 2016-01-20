@@ -131,6 +131,7 @@ module canvasCard {
 
             nexty += lineHeight;
             var nextx = cardIndent + padding;
+            var tagHorizontalSpace = 4;
             item.tags.forEach(element => {
                 var metrics = context.measureText(element);
                 if (!adjustedWidthForQRCode && nexty >= qrCodeTop - 4) {
@@ -145,13 +146,13 @@ module canvasCard {
                 }
 
                 context.beginPath();
-                context.rect(nextx - 3, nexty - 14, metrics.width + 8, lineHeight - 2);
+                context.rect(nextx, nexty - 14, metrics.width + (tagHorizontalSpace * 2), lineHeight - 2);
                 context.fillStyle = '#bfbfbf';
                 context.fill();
 
                 context.fillStyle = '#000000';
-                context.fillText(element, nextx, nexty);
-                nextx += metrics.width + 14;
+                context.fillText(element, nextx + 3, nexty);
+                nextx += metrics.width + (tagHorizontalSpace * 2) + 4;
             });
 
             if (nexty > maxHeight) {
@@ -171,7 +172,7 @@ module canvasCard {
                 context.translate(0, maxHeight);
                 context.rotate(-0.5 * Math.PI);
                 var metrics = context.measureText(item.type);
-                context.fillText(item.type, (maxHeight / 2 - metrics.width / 2), 15);
+                context.fillText(item.type, (maxHeight / 2 - metrics.width / 2), 17);
                 context.restore();
             }
 
@@ -253,24 +254,23 @@ module AlmRangers.VsoExtensions {
         }
 
         private getFieldName(fieldRef: string, fields: Array<WorkItemTrackingContracts.WorkItemField>): string {
-            var result = fieldRef;
             for (var position in fields) {
                 if (fields[position].referenceName === fieldRef) {
-                    result = fields[position].name;
-                    break;
+                    return fields[position].name;
                 }
             }
-            return result;
+
+            return fieldRef;
         }
 
-        private getWorkItemField(workItem: WorkItemTrackingContracts.WorkItem, field: string): string {
-            var result: string = "";
+        private getWorkItemField(workItem: WorkItemTrackingContracts.WorkItem, field: string): string {            
             for (var propertyName in workItem.fields) {
                 if (propertyName === field) {
-                    result = workItem.fields[propertyName];
+                    return workItem.fields[propertyName];
                 }
             }
-            return result;
+
+            return "";
         }
 
         private isEmpty(str: string): boolean {
@@ -311,7 +311,9 @@ module AlmRangers.VsoExtensions {
                                     that.updateMessageContainer("Loading work item data...");
                                     that.witClient.getFields().then((systemFields) => {
                                         var boardSettingFields = that.getCardFields("*", boardSettings);
+
                                         that.witClient.getWorkItems(workItemIDs, boardSettingFields).then((workItems) => {
+
                                             that.updateMessageContainer("");
 
                                             var cardData: Array<cardInfo> = [];
@@ -341,6 +343,7 @@ module AlmRangers.VsoExtensions {
 
                                                 var assigned = this.getWorkItemField(workItem, "System.AssignedTo");
                                                 var id = this.getWorkItemField(workItem, "System.Id");
+                                                
                                                 cardData.push({
                                                     assignedTo: assigned.substring(0, assigned.indexOf("<")),
                                                     id: id,
@@ -378,7 +381,7 @@ module AlmRangers.VsoExtensions {
         }
 
         private getCoreFields(): Array<string> {
-            return ["System.Id", "System.Title", "System.AssignedTo", "System.Tags", "System.WorkItemType", "Microsoft.VSTS.Scheduling.Effort"];
+            return ["System.Id", "System.Title", "System.AssignedTo", "System.Tags", "System.WorkItemType", "Microsoft.VSTS.Scheduling.Effort", "System.Description"];
         }
 
         private getCardFields(workItemType: string, boardSettings: any): Array<string> {
@@ -400,19 +403,21 @@ module AlmRangers.VsoExtensions {
         }
 
         private showEmptyFieldsFor(workItemType: string, boardSettings: any): boolean {
-            var result = false;
             for (var propertyName in boardSettings.cards) {
                 if (workItemType === propertyName) {
                     for (var position in boardSettings.cards[propertyName]) {
                         for (var fieldName in boardSettings.cards[propertyName][position]) {
                             if (fieldName === "showEmptyFields") {
-                                result = boardSettings.cards[propertyName][position][fieldName] === "true";
+                                if (boardSettings.cards[propertyName][position][fieldName] === "true") {
+                                    return true;
+                                }
                             }
                         }
                     }
                 }
             }
-            return result;
+
+            return false;
         }
 
         private getWorkItemIDs(teamContext: AppTeamContext,
@@ -421,7 +426,7 @@ module AlmRangers.VsoExtensions {
             teamFieldValues: WorkContracts.TeamFieldValues,
             done: (workItemTypes: Array<number>) => void): void {
             var that = this;
-            that.updateMessageContainer("querying work items...");
+            that.updateMessageContainer("Querying work items...");
             var query = "SELECT Id FROM WorkItems WHERE";
 
             //work item types

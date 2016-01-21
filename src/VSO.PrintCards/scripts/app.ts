@@ -100,7 +100,7 @@ module canvasCard {
             var qrCodeTop = maxHeight - qrCodeSize - 5;
             qrCodeCanvas.generate(item.cardUrl, qrCodeTop, qrCodeLeft, qrCodeSize - 5, canvas);
 
-            context.font = "12px Segoe UI";
+            context.font = "12px Segoe UI Light";
             var keyWidth = 0;
             item.fields.forEach(element => {
                 var metrics = context.measureText(element.title);
@@ -118,15 +118,30 @@ module canvasCard {
                     adjustedWidthForQRCode = true;
                 }
 
+                context.font = "12px Segoe UI Light";
                 context.fillText(element.title, cardIndent + padding, nexty);
+
+                context.font = "12px Segoe UI";
                 var valueStart = cardIndent + padding + keyWidth;
-                var metrics = context.measureText(element.value);
-                if (valueStart + metrics.width > qrCodeLeft && nexty >= qrCodeTop) {
-                    nexty += lineHeight;
-                    valueStart = qrCodeLeft - 5 - metrics.width;
+                var fieldValue: string = element.value;
+                var addElipse = false;
+                var metrics = context.measureText(fieldValue);
+                var valueSpace = cardSpace - valueStart - 4;
+                while (metrics.width > valueSpace) {
+                    fieldValue = fieldValue.substring(0, fieldValue.length - 1).trim();
+                    metrics = context.measureText(fieldValue + "...");
+
+                    if (!addElipse) {
+                        valueSpace -= context.measureText("...").width;
+                        addElipse = true;
+                    }
                 }
 
-                context.fillText(element.value, valueStart, nexty);
+                if (addElipse) {
+                    fieldValue += "...";
+                }
+
+                context.fillText(fieldValue, valueStart, nexty);
             });
 
             nexty += lineHeight;
@@ -263,7 +278,7 @@ module AlmRangers.VsoExtensions {
             return fieldRef;
         }
 
-        private getWorkItemField(workItem: WorkItemTrackingContracts.WorkItem, field: string): string {            
+        private getWorkItemField(workItem: WorkItemTrackingContracts.WorkItem, field: string): string {
             for (var propertyName in workItem.fields) {
                 if (propertyName === field) {
                     return workItem.fields[propertyName];
@@ -344,7 +359,7 @@ module AlmRangers.VsoExtensions {
                                                 var assigned = this.getWorkItemField(workItem, "System.AssignedTo");
                                                 var id = this.getWorkItemField(workItem, "System.Id");
                                                 var url = workItem.url.substring(0, workItem.url.indexOf("_apis")) + teamContext.project + "/_workitems/edit/" + id;
-                                                
+
                                                 cardData.push({
                                                     assignedTo: assigned.substring(0, assigned.indexOf("<")),
                                                     id: id,

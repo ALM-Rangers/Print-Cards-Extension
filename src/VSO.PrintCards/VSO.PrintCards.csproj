@@ -45,7 +45,6 @@
     <Content Include="images\print-cards-icon.png" />
     <Content Include="index.html" />
     <Content Include="scripts\main.js" />
-    <Content Include="scripts\qrcode.js" />
     <Content Include="sdk\scripts\VSS.SDK.js" />
     <Content Include="web.config" />
   </ItemGroup>
@@ -54,7 +53,6 @@
     <TypeScriptCompile Include="scripts\ref\jquery.d.ts" />
     <TypeScriptCompile Include="scripts\ref\knockout.d.ts" />
     <TypeScriptCompile Include="scripts\ref\q.d.ts" />
-    <TypeScriptCompile Include="scripts\ref\qrcode.d.ts" />
     <TypeScriptCompile Include="scripts\ref\VSS.d.ts" />
   </ItemGroup>
   <ItemGroup>

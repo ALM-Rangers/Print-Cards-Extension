@@ -343,6 +343,7 @@ module AlmRangers.VsoExtensions {
 
                                                 var assigned = this.getWorkItemField(workItem, "System.AssignedTo");
                                                 var id = this.getWorkItemField(workItem, "System.Id");
+                                                var url = workItem.url.substring(0, workItem.url.indexOf("_apis")) + teamContext.project + "/_workitems/edit/" + id;
                                                 
                                                 cardData.push({
                                                     assignedTo: assigned.substring(0, assigned.indexOf("<")),
@@ -351,7 +352,7 @@ module AlmRangers.VsoExtensions {
                                                     type: workItemType,
                                                     fields: fields,
                                                     tags: tags,
-                                                    cardUrl: workItem.url
+                                                    cardUrl: url
                                                 });
 
                                                 if (+id > largestId) {

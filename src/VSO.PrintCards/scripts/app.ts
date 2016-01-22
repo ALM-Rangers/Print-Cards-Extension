@@ -63,6 +63,27 @@ module canvasCard {
       		context.stroke();
     }
 
+    function trimText(text: string, horizontalSpace: number, context: CanvasRenderingContext2D): string {
+        var addElipse = false;
+        var modifiedText = text;
+        var metrics = context.measureText(text);
+        while (metrics.width > horizontalSpace) {
+            modifiedText = modifiedText.substring(0, modifiedText.length - 1).trim();
+            metrics = context.measureText(modifiedText + "...");
+
+            if (!addElipse) {
+                horizontalSpace -= context.measureText("...").width;
+                addElipse = true;
+            }
+        }
+
+        if (addElipse) {
+            modifiedText += "...";
+        }
+
+        return modifiedText;
+    }
+
     export function drawCards(testData: Array<any>, initialMaxHeight: number, largestId: number, renderExtras: boolean): any {
         var minCardHeight = 150;
         var initialCardWidth = 300;
@@ -93,7 +114,9 @@ module canvasCard {
 
             context.font = "14px Segoe UI";
             nexty += lineHeight + 15;
-            context.fillText(item.assignedTo, cardIndent + padding, nexty);
+            var assignedToStart = cardIndent + padding;
+            var assignedTo = trimText(item.assignedTo, cardSpace - assignedToStart, context);
+            context.fillText(assignedTo, cardIndent + padding, nexty);
 
             var qrCodeSize = 80;
             var qrCodeLeft = cardSpace - qrCodeSize - 5;
@@ -123,24 +146,8 @@ module canvasCard {
 
                 context.font = "12px Segoe UI";
                 var valueStart = cardIndent + padding + keyWidth;
-                var fieldValue: string = element.value;
-                var addElipse = false;
-                var metrics = context.measureText(fieldValue);
                 var valueSpace = cardSpace - valueStart - 4;
-                while (metrics.width > valueSpace) {
-                    fieldValue = fieldValue.substring(0, fieldValue.length - 1).trim();
-                    metrics = context.measureText(fieldValue + "...");
-
-                    if (!addElipse) {
-                        valueSpace -= context.measureText("...").width;
-                        addElipse = true;
-                    }
-                }
-
-                if (addElipse) {
-                    fieldValue += "...";
-                }
-
+                var fieldValue = trimText(element.value, valueSpace, context);              
                 context.fillText(fieldValue, valueStart, nexty);
             });
 

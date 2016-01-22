@@ -152,7 +152,7 @@ module canvasCard {
                 context.font = "12px Segoe UI";
                 var valueStart = cardIndent + padding + keyWidth;
                 var valueSpace = cardSpace - valueStart - 4;
-                var fieldValue = trimText(element.value, valueSpace, context);              
+                var fieldValue = trimText(element.value, valueSpace, context);
                 context.fillText(fieldValue, valueStart, nexty);
             });
 
@@ -387,7 +387,7 @@ module AlmRangers.VsoExtensions {
                                                 }
                                             }
 
-                                            var firstPassResult = canvasCard.drawCards(cardData, 0, largestId, false);                                            
+                                            var firstPassResult = canvasCard.drawCards(cardData, 0, largestId, false);
                                             var secondPassResult = canvasCard.drawCards(cardData, firstPassResult.maxHeight, largestId, true);
 
                                             secondPassResult.cards.forEach(card => {

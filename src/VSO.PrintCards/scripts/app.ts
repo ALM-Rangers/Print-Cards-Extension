@@ -21,7 +21,7 @@ import WorkClient = require("TFS/Work/RestClient");
 import TFS_Wit_WebApi = require("TFS/WorkItemTracking/RestClient");
 
 module canvasCard {
-    var lineHeight = 20;
+    var lineHeight = 20; 
     var titleLineHeight = 20;
     var padding = 2;
 

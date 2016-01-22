@@ -84,7 +84,12 @@ module canvasCard {
         return modifiedText;
     }
 
-    export function drawCards(testData: Array<any>, initialMaxHeight: number, largestId: number, renderExtras: boolean): any {
+    interface drawCardsResult {
+        cards: Array<HTMLDivElement>,
+        maxHeight: number
+    }
+
+    export function drawCards(testData: Array<any>, initialMaxHeight: number, largestId: number, renderExtras: boolean): drawCardsResult {
         var minCardHeight = 150;
         var initialCardWidth = 300;
         ///* this is just to deal with inconsistent printer margins that each browser uses */
@@ -93,7 +98,7 @@ module canvasCard {
         //if (navigator.userAgent.indexOf("Chrome/") > -1) { cardWidth = 325; }
         //if (navigator.userAgent.indexOf("Edge/") > -1) { cardWidth = 300; } /* edge must be last since it also tries to trick us into thinking it is chrome */
 
-        var cards = [];
+        var cards = new Array<HTMLDivElement>();
         var maxHeight = initialMaxHeight;
         testData.forEach(item => {
             var cardWidth = initialCardWidth;
@@ -382,7 +387,7 @@ module AlmRangers.VsoExtensions {
                                                 }
                                             }
 
-                                            var firstPassResult = canvasCard.drawCards(cardData, 0, largestId, false);
+                                            var firstPassResult = canvasCard.drawCards(cardData, 0, largestId, false);                                            
                                             var secondPassResult = canvasCard.drawCards(cardData, firstPassResult.maxHeight, largestId, true);
 
                                             secondPassResult.cards.forEach(card => {

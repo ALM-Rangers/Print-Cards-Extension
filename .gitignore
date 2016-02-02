@@ -7,3 +7,4 @@ bin/
 !/src/VSO.PrintCards/scripts/qrcode.js
 /update.bat
 
+/src/packages

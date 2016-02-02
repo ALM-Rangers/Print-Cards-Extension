@@ -139,6 +139,7 @@ module canvasCard {
 
             keyWidth += 10;
 
+            
             item.fields.forEach(element => {
                 nexty += lineHeight;
                 if (!adjustedWidthForQRCode && nexty >= qrCodeTop) {
@@ -152,7 +153,12 @@ module canvasCard {
                 context.font = "12px Segoe UI";
                 var valueStart = cardIndent + padding + keyWidth;
                 var valueSpace = cardSpace - valueStart - 4;
-                var fieldValue = trimText(element.value, valueSpace, context);
+                
+                var fieldValue = element.value;
+                if (moment(element.value, moment.ISO_8601, true).isValid()) {
+                    fieldValue = moment(element.value).format("ll");
+                }
+                fieldValue = trimText(fieldValue, valueSpace, context);
                 context.fillText(fieldValue, valueStart, nexty);
             });
 

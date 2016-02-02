@@ -140,8 +140,8 @@ module canvasCard {
             keyWidth += 10;       
             item.fields.forEach(element => {
                 nexty += lineHeight;
-                if (!adjustedWidthForQRCode && nexty >= qrCodeTop) {
-                    cardSpace -= qrCodeSize - 5;
+                if (!adjustedWidthForQRCode && nexty >= qrCodeTop - 5) {
+                    cardSpace -= (qrCodeSize + 10);
                     adjustedWidthForQRCode = true;
                 }
 
@@ -165,8 +165,8 @@ module canvasCard {
             var tagHorizontalSpace = 4;
             item.tags.forEach(element => {
                 var metrics = context.measureText(element);
-                if (!adjustedWidthForQRCode && nexty >= qrCodeTop - 4) {
-                    cardSpace -= qrCodeSize - 5;
+                if (!adjustedWidthForQRCode && nexty >= qrCodeTop - 5) {
+                    cardSpace -= (qrCodeSize + 10);
                     adjustedWidthForQRCode = true;
                 }
 

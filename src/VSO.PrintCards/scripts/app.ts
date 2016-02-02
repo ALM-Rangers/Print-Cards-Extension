@@ -137,9 +137,7 @@ module canvasCard {
                 }
             });
 
-            keyWidth += 10;
-
-            
+            keyWidth += 10;       
             item.fields.forEach(element => {
                 nexty += lineHeight;
                 if (!adjustedWidthForQRCode && nexty >= qrCodeTop) {
@@ -162,7 +160,7 @@ module canvasCard {
                 context.fillText(fieldValue, valueStart, nexty);
             });
 
-            nexty += lineHeight;
+            nexty += lineHeight + 15;
             var nextx = cardIndent + padding;
             var tagHorizontalSpace = 4;
             item.tags.forEach(element => {

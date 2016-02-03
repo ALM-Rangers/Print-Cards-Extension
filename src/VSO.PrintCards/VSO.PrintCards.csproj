@@ -45,6 +45,7 @@
     <Content Include="images\print-cards-icon.png" />
     <Content Include="index.html" />
     <Content Include="scripts\main.js" />
+    <Content Include="scripts\moment-with-locales.min.js" />
     <Content Include="scripts\qrcode.js" />
     <Content Include="sdk\scripts\VSS.SDK.js" />
     <Content Include="web.config" />
@@ -56,12 +57,15 @@
     <TypeScriptCompile Include="scripts\ref\q.d.ts" />
     <TypeScriptCompile Include="scripts\ref\qrcode.d.ts" />
     <TypeScriptCompile Include="scripts\ref\VSS.d.ts" />
+    <TypeScriptCompile Include="scripts\ref\moment-node.d.ts" />
+    <TypeScriptCompile Include="scripts\ref\moment.d.ts" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="vss-extension.json" />
     <Content Include="scripts\app.js.map" />
     <Content Include="LICENCE-TERMS.md" />
     <Content Include="README.md" />
+    <Content Include="packages.config" />
     <None Include="Test-vso-print-cards-vsoextensions-almrangers.pubxml" />
   </ItemGroup>
   <PropertyGroup>

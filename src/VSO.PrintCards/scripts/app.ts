@@ -137,12 +137,11 @@ module canvasCard {
                 }
             });
 
-            keyWidth += 10;
-
+            keyWidth += 10;       
             item.fields.forEach(element => {
                 nexty += lineHeight;
-                if (!adjustedWidthForQRCode && nexty >= qrCodeTop) {
-                    cardSpace -= qrCodeSize - 5;
+                if (!adjustedWidthForQRCode && nexty >= qrCodeTop - 5) {
+                    cardSpace -= (qrCodeSize + 10);
                     adjustedWidthForQRCode = true;
                 }
 
@@ -152,17 +151,22 @@ module canvasCard {
                 context.font = "12px Segoe UI";
                 var valueStart = cardIndent + padding + keyWidth;
                 var valueSpace = cardSpace - valueStart - 4;
-                var fieldValue = trimText(element.value, valueSpace, context);
+                
+                var fieldValue = element.value;
+                if (moment(element.value, moment.ISO_8601, true).isValid()) {
+                    fieldValue = moment(element.value).format("ll");
+                }
+                fieldValue = trimText(fieldValue, valueSpace, context);
                 context.fillText(fieldValue, valueStart, nexty);
             });
 
-            nexty += lineHeight;
+            nexty += lineHeight + 15;
             var nextx = cardIndent + padding;
             var tagHorizontalSpace = 4;
             item.tags.forEach(element => {
                 var metrics = context.measureText(element);
-                if (!adjustedWidthForQRCode && nexty >= qrCodeTop - 4) {
-                    cardSpace -= qrCodeSize - 5;
+                if (!adjustedWidthForQRCode && nexty >= qrCodeTop - 5) {
+                    cardSpace -= (qrCodeSize + 10);
                     adjustedWidthForQRCode = true;
                 }
 

@@ -1,7 +1,7 @@
 ﻿{
     "manifestVersion": 1,
     "id": "PrintCards",
-    "version": "1.1.1",
+    "version": "2.0.0",
     "name": "Print Cards",
     "description": "Print cards from your backlog for use on a physical scrum board.",
     "publisher": "ms-devlabs",
@@ -15,6 +15,16 @@
     "files": [
         {
             "path": "scripts/app.js",
+            "contentType": "text/javascript",
+            "addressable": true
+        },
+        {
+            "path": "scripts/qrcode.js",
+            "contentType": "text/javascript",
+            "addressable": true
+        },
+        {
+            "path": "scripts/moment-with-locales.min.js",
             "contentType": "text/javascript",
             "addressable": true
         },

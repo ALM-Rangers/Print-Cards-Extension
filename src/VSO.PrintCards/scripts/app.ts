@@ -170,7 +170,7 @@ module canvasCard {
                     adjustedWidthForQRCode = true;
                 }
 
-                var tagPositionEnd = metrics.width + nextx + 5;
+                var tagPositionEnd = metrics.width + nextx + 8;
                 if (tagPositionEnd > cardSpace) {
                     nexty += lineHeight + 4;
                     nextx = cardIndent + padding;

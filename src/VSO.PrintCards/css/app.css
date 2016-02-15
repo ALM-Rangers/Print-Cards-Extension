@@ -16,6 +16,31 @@ body {
     background-color: #fcfcfc;
 }
 
+.loadingMessage {
+    margin: auto;
+    left: 0;
+    top: 0;
+    width: 300px;
+    height: 50px;
+    right: 0;
+    bottom: 0;
+    position: absolute;
+}
+
+#message-container {
+    left: 50px;
+    top: 10px;
+    bottom: 0;
+    position: absolute;
+}
+
+.spinner {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    background: url('../images/big-progress.gif') no-repeat 0 0 !important;
+}
+
 #cards-container-outer {
     position: relative;
     padding: 0;

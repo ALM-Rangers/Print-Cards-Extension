@@ -21,7 +21,7 @@ import WorkClient = require("TFS/Work/RestClient");
 import TFS_Wit_WebApi = require("TFS/WorkItemTracking/RestClient");
 
 module canvasCard {
-    var lineHeight = 20; 
+    var lineHeight = 20;
     var titleLineHeight = 20;
     var padding = 2;
 
@@ -137,7 +137,7 @@ module canvasCard {
                 }
             });
 
-            keyWidth += 10;       
+            keyWidth += 10;
             item.fields.forEach(element => {
                 nexty += lineHeight;
                 if (!adjustedWidthForQRCode && nexty >= qrCodeTop - 5) {
@@ -151,7 +151,7 @@ module canvasCard {
                 context.font = "12px Segoe UI";
                 var valueStart = cardIndent + padding + keyWidth;
                 var valueSpace = cardSpace - valueStart - 4;
-                
+
                 var fieldValue = element.value;
                 if (moment(element.value, moment.ISO_8601, true).isValid()) {
                     fieldValue = moment(element.value).format("ll");
@@ -268,13 +268,15 @@ module AlmRangers.VsoExtensions {
     export class PrintCards {
         printContainer: HTMLDivElement;
         messageContainer: HTMLDivElement;
+        loadingMessage: HTMLDivElement;
         cardsContainer: HTMLDivElement;
         witClient: TFS_Wit_WebApi.WorkItemTrackingHttpClient;
 
-        constructor(cardsContainer: HTMLDivElement, messageContainer: HTMLDivElement, printContainer: HTMLDivElement) {
+        constructor(cardsContainer: HTMLDivElement, loadingMessage: HTMLDivElement, messageContainer: HTMLDivElement, printContainer: HTMLDivElement) {
             this.updateMessageContainer("Loading...");
             this.cardsContainer = cardsContainer;
             this.messageContainer = messageContainer;
+            this.loadingMessage = loadingMessage;
             this.printContainer = printContainer;
             this.hidePrintBar();
             this.witClient = VSS_Service.getCollectionClient(TFS_Wit_WebApi.WorkItemTrackingHttpClient);
@@ -512,8 +514,10 @@ module AlmRangers.VsoExtensions {
         private updateMessageContainer(msg: string) {
             $(this.messageContainer).html(msg);
             if (msg.length > 0) {
+                $(this.loadingMessage).show();
                 $(this.messageContainer).show();
             } else {
+                $(this.loadingMessage).hide();
                 $(this.messageContainer).hide();
             }
         }
@@ -549,9 +553,10 @@ module AlmRangers.VsoExtensions {
 var boardId = VSS.getConfiguration().properties["id"];
 var cardsContainer = <HTMLDivElement>document.getElementById("cards-container");
 var messageContainer = <HTMLDivElement>document.getElementById("message-container");
+var loadingMessage = <HTMLDivElement>document.getElementById("loadingMessage");
 var printContainer = <HTMLDivElement>document.getElementById("print-container");
 var printButton = <HTMLButtonElement>document.getElementById("print-button");
-var printCards = new AlmRangers.VsoExtensions.PrintCards(cardsContainer, messageContainer, printContainer);
+var printCards = new AlmRangers.VsoExtensions.PrintCards(cardsContainer, loadingMessage, messageContainer, printContainer);
 printCards.loadBoard(boardId);
 printButton.onclick = function () {
     printCards.appPrint(printCards);

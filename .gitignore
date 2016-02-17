@@ -8,3 +8,4 @@ bin/
 !/src/VSO.PrintCards/scripts/moment-with-locales.min.js
 /update.bat
 /src/packages
+*.vsix

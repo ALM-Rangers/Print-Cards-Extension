@@ -17,12 +17,7 @@
             "path": "scripts/app.js",
             "contentType": "text/javascript",
             "addressable": true
-        },
-        {
-            "path": "images/big-progress.gif",
-            "contentType": "image/gif",
-            "addressable": true
-        },
+        },   
         {
             "path": "scripts/qrcode.js",
             "contentType": "text/javascript",

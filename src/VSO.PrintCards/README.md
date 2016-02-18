@@ -10,20 +10,26 @@ This extension adds a `print` action to your backlog.
 
 Clicking `print` opens a preview. From there you can print to a printer or save. 
 
-![Use your browser](images/image2.png)
+![Physically printed](images/image2.png)
 
 ## Supported browsers ##
 
+Our supported browsers are 
+- Edge 
+- Internet Explorer
+- Firefox 
+- Chrome
 
+Other browsers may work, provided they support HTML 5 canvas &amp; CSS 3 correctly.
 
-- Supported browsers include Edge (see notice below), Internet Explorer (IE), Firefox and Chrome.
-
-> NOTICE: We are investigating a display issue with the Edge browser. You must be on version 10568 of Windows and Edge 25.10586 for this extension to display and print correctly.
+### Known Issues
+When using Edge on a version of Windows 10 before the November 2015 update of Windows 10 (version 10568), for this extension will NOT print correctly.
 
 ## Quick steps to get started ##
 
 1. Navigate to your backlog board.
-1. Click on the `Print Cards` icon above the board on the right hand side (next to "Enter full screen mode").
-1. Click 'print' to print cards. 
+2. Click on the `Print Cards` icon (![print cards icon](images/print-cards-icon-small.png)) above the board on the right hand side (next to "Enter full screen mode").
+3. Click the `Print` button to print the cards. 
+4. You can scan the QR Code on each card to be taken directly to card in your browser.
 
 > Microsoft DevLabs is an outlet for experiments from Microsoft, experiments that represent some of the latest ideas around developer tools. Solutions in this category are designed for broad usage, and you are encouraged to use and provide feedback on them; however, these extensions are not supported nor are any commitments made as to their longevity.

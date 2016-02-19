@@ -34,6 +34,7 @@
     <Content Include="css\print.min.css">
       <DependentUpon>print.css</DependentUpon>
     </Content>
+    <Content Include="images\big-progress.gif" />
     <Content Include="images\image1.png" />
     <Content Include="images\image2.png" />
     <Content Include="images\image3.png" />
@@ -45,7 +46,10 @@
     <Content Include="images\print-cards-icon.png" />
     <Content Include="index.html" />
     <Content Include="scripts\main.js" />
+    <Content Include="scripts\moment-with-locales.min.js" />
+    <Content Include="scripts\qrcode.js" />
     <Content Include="sdk\scripts\VSS.SDK.js" />
+    <Content Include="ThirdPartyNotice.txt" />
     <Content Include="web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -53,13 +57,17 @@
     <TypeScriptCompile Include="scripts\ref\jquery.d.ts" />
     <TypeScriptCompile Include="scripts\ref\knockout.d.ts" />
     <TypeScriptCompile Include="scripts\ref\q.d.ts" />
+    <TypeScriptCompile Include="scripts\ref\qrcode.d.ts" />
     <TypeScriptCompile Include="scripts\ref\VSS.d.ts" />
+    <TypeScriptCompile Include="scripts\ref\moment-node.d.ts" />
+    <TypeScriptCompile Include="scripts\ref\moment.d.ts" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="vss-extension.json" />
     <Content Include="scripts\app.js.map" />
     <Content Include="LICENCE-TERMS.md" />
     <Content Include="README.md" />
+    <Content Include="packages.config" />
     <None Include="Test-vso-print-cards-vsoextensions-almrangers.pubxml" />
   </ItemGroup>
   <PropertyGroup>

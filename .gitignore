@@ -1,4 +1,11 @@
 src/.vs
 obj/
 bin/
-/src/VSO.PrintCards/scripts
+/src/VSO.PrintCards/scripts/*.js
+/src/VSO.PrintCards/scripts/*.js.map
+*.user
+!/src/VSO.PrintCards/scripts/qrcode.js
+!/src/VSO.PrintCards/scripts/moment-with-locales.min.js
+/update.bat
+/src/packages
+*.vsix

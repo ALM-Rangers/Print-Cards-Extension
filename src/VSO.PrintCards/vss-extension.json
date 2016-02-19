@@ -1,7 +1,7 @@
 ﻿{
     "manifestVersion": 1,
     "id": "PrintCards",
-    "version": "1.1.1",
+    "version": "2.0.0",
     "name": "Print Cards",
     "description": "Print cards from your backlog for use on a physical scrum board.",
     "publisher": "ms-devlabs",
@@ -12,43 +12,57 @@
             "id": "Microsoft.VisualStudio.Services"
         }
     ],
-    "files": [
-        {
-            "path": "scripts/app.js",
-            "contentType": "text/javascript",
-            "addressable": true
-        },
-        {
-            "path": "scripts/main.js",
-            "contentType": "text/javascript",
-            "addressable": true
-        },
-        {
-            "path": "images",
-            "addressable": true
-        },
-        {
-            "path": "css/app.css",
-            "addressable": true
-        },
-        {
-            "path": "css/print.css",
-            "addressable": true
-        },
-        {
-            "path": "index.html",
-            "addressable": true
-        },
-        {
-            "path": "main.html",
-            "addressable": true
-        },
-        {
-            "path": "sdk/scripts/VSS.SDK.js",
-            "contentType": "text/javascript",
-            "addressable": true
-        }
-    ],
+  "files": [
+    {
+      "path": "scripts/app.js",
+      "contentType": "text/javascript",
+      "addressable": true
+    },
+    {
+      "path": "scripts/qrcode.js",
+      "contentType": "text/javascript",
+      "addressable": true
+    },
+    {
+      "path": "scripts/moment-with-locales.min.js",
+      "contentType": "text/javascript",
+      "addressable": true
+    },
+    {
+      "path": "scripts/main.js",
+      "contentType": "text/javascript",
+      "addressable": true
+    },
+    {
+      "path": "images",
+      "addressable": true
+    },
+    {
+      "path": "css/app.css",
+      "addressable": true
+    },
+    {
+      "path": "css/print.css",
+      "addressable": true
+    },
+    {
+      "path": "index.html",
+      "addressable": true
+    },
+    {
+      "path": "main.html",
+      "addressable": true
+    },
+    {
+      "path": "sdk/scripts/VSS.SDK.js",
+      "contentType": "text/javascript",
+      "addressable": true
+    },
+    {
+      "path": "ThirdPartyNotice.txt",
+      "addressable": true
+    }
+  ],
     "icons": {
         "default": "images/print-cards-icon.png"
     },

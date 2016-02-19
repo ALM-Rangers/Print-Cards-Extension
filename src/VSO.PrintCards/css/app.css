@@ -13,7 +13,32 @@ body {
     font-size: 12px;
     padding: 0;
     margin: 0;
-    background-color: white;
+    background-color: #fcfcfc;
+}
+
+.loadingMessage {
+    margin: auto;
+    left: 0;
+    top: 0;
+    width: 300px;
+    height: 50px;
+    right: 0;
+    bottom: 0;
+    position: absolute;
+}
+
+#message-container {
+    left: 50px;
+    top: 10px;
+    bottom: 0;
+    position: absolute;
+}
+
+.spinner {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    background: url('../images/big-progress.gif') no-repeat 0 0 !important;
 }
 
 #cards-container-outer {
@@ -47,7 +72,7 @@ body {
     width: 100%;
     margin-left: -10px;
     display: none;
-    background-color: white;
+    background-color: #fcfcfc;
 }
 
     #print-container button {

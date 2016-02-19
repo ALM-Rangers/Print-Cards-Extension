@@ -1,6 +1,6 @@
 # Print Cards
 ### What
-This extension adds a print option to the backlog which allows you to print the cards for use on a physical scrum board.
+This extension adds a print option to the backlog which allows you to print the cards for use on a physical scrum board. Print cards have QR Codes used to bridge the physical and digital boards.
 
 ### Why
 Having a physical scrum board can allow those inside and outside the team a quick view location for the status of the work and the act of moving physical cards has a more real and tangible feel than just clicking on a screen.
@@ -24,8 +24,8 @@ Check out the [Print Cards journal](https://github.com/ALM-Rangers/VSTS-Extensio
 
 Install the extension [here](https://marketplace.visualstudio.com/items/ms-devlabs.PrintCards).
 
-![](https://github.com/ALM-Rangers/VSTS-Extension-PrintCards/blob/master/_img/screenshot1.jpg)
-![](https://github.com/ALM-Rangers/VSTS-Extension-PrintCards/blob/master/_img/screenshot2.jpg)
+![In VSO screen shot of Print Cards](https://github.com/ALM-Rangers/VSTS-Extension-PrintCards/blob/master/src/VSO.PrintCards/images/image1.png)
+![Printed print cardss](https://github.com/ALM-Rangers/VSTS-Extension-PrintCards/blob/master/src/VSO.PrintCards/images/image2.png)
 
 
 <table>

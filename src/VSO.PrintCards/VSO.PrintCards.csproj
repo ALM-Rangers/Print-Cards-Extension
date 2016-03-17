@@ -68,6 +68,7 @@
     <Content Include="LICENCE-TERMS.md" />
     <Content Include="README.md" />
     <Content Include="packages.config" />
+    <Content Include="EULA.md" />
     <None Include="Test-vso-print-cards-vsoextensions-almrangers.pubxml" />
   </ItemGroup>
   <PropertyGroup>

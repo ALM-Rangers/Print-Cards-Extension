@@ -1,7 +1,7 @@
 ﻿{
   "manifestVersion": 1,
   "id": "PrintCards",
-  "version": "2.0.1",
+  "version": "2.0.3",
   "name": "Print Cards",
   "description": "Print cards from your backlog for use on a physical scrum board.",
   "publisher": "ms-devlabs",
@@ -76,9 +76,6 @@
   "content": {
     "details": {
       "path": "README.md"
-    },
-    "license": {
-      "path": "EULA.md"
     }
   },
   "branding": {
@@ -87,7 +84,7 @@
   },
   "links": {
     "support": {
-      "uri": "http://aka.ms/vsarcontact"
+      "uri": "https://aka.ms/vsarcontact"
     }
   },
   "contributions": [

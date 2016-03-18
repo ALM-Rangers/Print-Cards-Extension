@@ -1,7 +1,7 @@
 ﻿{
   "manifestVersion": 1,
   "id": "PrintCards",
-  "version": "2.0.3",
+  "version": "2.0.4",
   "name": "Print Cards",
   "description": "Print cards from your backlog for use on a physical scrum board.",
   "publisher": "ms-devlabs",
@@ -76,6 +76,9 @@
   "content": {
     "details": {
       "path": "README.md"
+    },
+    "license": {
+      "path": "license-terms.md"
     }
   },
   "branding": {

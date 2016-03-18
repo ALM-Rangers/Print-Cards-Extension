@@ -36,13 +36,9 @@ When using Edge on a version of Windows 10 before the November 2015 update of Wi
 
 > Microsoft DevLabs is an outlet for experiments from Microsoft, experiments that represent some of the latest ideas around developer tools. Solutions in this category are designed for broad usage, and you are encouraged to use and provide feedback on them; however, these extensions are not supported nor are any commitments made as to their longevity.
 
-[MICROSOFT PRE-RELEASE SOFTWARE LICENSE TERMS](https://aka.ms/vsarEULA)
-
 ## Third Party Programs ##
 
-The software may include third party programs that Microsoft, not the third party, licenses to you under this agreement. Notices, if any, for the third party programs are included for your information.
-
-[View Notices](https://marketplace.visualstudio.com/_apis/public/gallery/publisher/ms-devlabs/extension/PrintCards/latest/assetbyname/ThirdPartyNotice.txt) for certain third party software included in this extension.
+[View Notices](https://marketplace.visualstudio.com/_apis/public/gallery/publisher/ms-devlabs/extension/PrintCards/latest/assetbyname/ThirdPartyNotice.txt) for third party software included in this extension.
 
 ## Contributors ##
 

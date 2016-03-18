@@ -49,7 +49,7 @@
     <Content Include="scripts\moment-with-locales.min.js" />
     <Content Include="scripts\qrcode.js" />
     <Content Include="sdk\scripts\VSS.SDK.js" />
-    <Content Include="ThirdPartyNotice.txt" />
+    <Content Include="ThirdPartyNotices.txt" />
     <Content Include="web.config" />
   </ItemGroup>
   <ItemGroup>

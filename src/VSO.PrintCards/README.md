@@ -38,7 +38,7 @@ When using Edge on a version of Windows 10 before the November 2015 update of Wi
 
 ## Third Party Programs ##
 
-[View Notices](https://marketplace.visualstudio.com/_apis/public/gallery/publisher/ms-devlabs/extension/PrintCards/latest/assetbyname/ThirdPartyNotice.txt) for third party software included in this extension.
+[View Notices](https://marketplace.visualstudio.com/_apis/public/gallery/publisher/ms-devlabs/extension/PrintCards/latest/assetbyname/ThirdPartyNotices.txt) for third party software included in this extension.
 
 ## Contributors ##
 

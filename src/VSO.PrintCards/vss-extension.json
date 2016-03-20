@@ -1,12 +1,12 @@
 ﻿{
   "manifestVersion": 1,
   "id": "PrintCards",
-  "version": "2.0.5",
+  "version": "2.0.6",
   "name": "Print Cards",
   "description": "Print cards from your backlog for use on a physical scrum board.",
   "publisher": "ms-devlabs",
   "scopes": [ "vso.work" ],
-  "galleryFlags": [ "Public", "Preview" ],
+  "galleryFlags": [ "Public" ],
   "targets": [
     {
       "id": "Microsoft.VisualStudio.Services"

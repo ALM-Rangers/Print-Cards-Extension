@@ -32,17 +32,11 @@ When using Edge on a version of Windows 10 before the November 2015 update of Wi
 3. Click the `Print` button to print the cards. 
 4. You can scan the QR Code on each card to be taken directly to that card in your browser.
 
-## Microsoft DevLabs ##
-
 > Microsoft DevLabs is an outlet for experiments from Microsoft, experiments that represent some of the latest ideas around developer tools. Solutions in this category are designed for broad usage, and you are encouraged to use and provide feedback on them; however, these extensions are not supported nor are any commitments made as to their longevity.
-
-## Third Party Programs ##
 
 [View Notices](https://marketplace.visualstudio.com/_apis/public/gallery/publisher/ms-devlabs/extension/PrintCards/latest/assetbyname/ThirdPartyNotices.txt) for third party software included in this extension.
 
 ## Contributors ##
-
-> Microsoft DevLabs is an outlet for experiments from Microsoft, experiments that represent some of the latest ideas around developer tools. Solutions in this category are designed for broad usage, and you are encouraged to use and provide feedback on them; however, these extensions are not supported nor are any commitments made as to their longevity.
 
 > We thank the following contributor(s) for this extension: Gordon Beeming and Robert MacLean.
 

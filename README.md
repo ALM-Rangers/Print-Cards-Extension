@@ -27,6 +27,14 @@ Install the extension [here](https://marketplace.visualstudio.com/items/ms-devla
 ![In VSO screen shot of Print Cards](https://github.com/ALM-Rangers/VSTS-Extension-PrintCards/blob/master/src/VSO.PrintCards/images/image1.png)
 ![Printed print cardss](https://github.com/ALM-Rangers/VSTS-Extension-PrintCards/blob/master/src/VSO.PrintCards/images/image2.png)
 
+###Contribute
+Contributions to Print Cards are welcome. Here is how you can contribute to Print Cards:  
+
+- Submit bugs and help us verify fixes  
+- Submit pull requests for bug fixes and features and discuss existing proposals   
+
+Please refer to [Contribution guidelines](.github/CONTRIBUTING.md) and the [Code of Conduct](.github/COC.md) for more details.
+
 
 <table>
   <tr>

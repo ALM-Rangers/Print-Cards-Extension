@@ -1,5 +1,5 @@
 Thank you for your pull request!
-By completing this pull request, you agree to the [Contributing License Agreement](CLA.md).
+By completing this pull request, you agree to the [Contributing License Agreement](https://github.com/ALM-Rangers/VSTS-Extension-PrintCards/blob/master/.github/CLA.md).
 
 Fixes # .
 

@@ -2,7 +2,7 @@
   "manifestVersion": 1,
   "id": "PrintCards",
   "version": "2.0.6",
-  "name": "Print Cards",
+  "name": "Print Cards (deprecated)",
   "description": "Print cards from your backlog for use on a physical scrum board.",
   "publisher": "ms-devlabs",
   "scopes": [ "vso.work" ],

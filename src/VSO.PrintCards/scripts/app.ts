@@ -474,7 +474,7 @@ module AlmRangers.VsoExtensions {
             //areas
             var teamFieldQuery = "";
             for (var position in teamFieldValues.values) {
-                if (position > 0) {
+                if (teamFieldQuery.length > 0) {
                     teamFieldQuery = teamFieldQuery + " OR";
                 }
                 teamFieldQuery = teamFieldQuery + " [" + teamFieldValues.field.referenceName + "]";

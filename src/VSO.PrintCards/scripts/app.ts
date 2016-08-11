@@ -19,6 +19,7 @@ import WorkContracts = require("TFS/Work/Contracts");
 import WorkItemTrackingContracts = require("TFS/WorkItemTracking/Contracts");
 import WorkClient = require("TFS/Work/RestClient");
 import TFS_Wit_WebApi = require("TFS/WorkItemTracking/RestClient");
+import TelemetryClient = require("scripts/TelemetryClient");
 
 module canvasCard {
     var lineHeight = 20;
@@ -283,7 +284,9 @@ module AlmRangers.VsoExtensions {
         }
 
         public loadBoard(boardId: string): void {
+            TelemetryClient.TelemetryClient.getClient().trackEvent("loadBoard.Started");
             this.getBoardWorkItems(boardId);
+            TelemetryClient.TelemetryClient.getClient().trackEvent("loadBoard.Done");
         }
 
         private getFieldName(fieldRef: string, fields: Array<WorkItemTrackingContracts.WorkItemField>): string {

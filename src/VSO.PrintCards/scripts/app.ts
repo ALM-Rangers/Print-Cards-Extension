@@ -542,6 +542,7 @@ module AlmRangers.VsoExtensions {
         }
 
         public appPrint(that: AlmRangers.VsoExtensions.PrintCards): void {
+            TelemetryClient.TelemetryClient.getClient().trackEvent("appPrint.Started");
             window.focus();
             if (navigator.userAgent.indexOf("Trident/") > -1) {
                 /* this disables the shrink to fit thing in IE 11 */
@@ -549,6 +550,7 @@ module AlmRangers.VsoExtensions {
             } else {
                 window.print();
             }
+            TelemetryClient.TelemetryClient.getClient().trackEvent("appPrint.Done");
         }
     }
 }

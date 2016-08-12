@@ -50,6 +50,7 @@
     <Content Include="scripts\main.js" />
     <Content Include="scripts\moment-with-locales.min.js" />
     <Content Include="scripts\qrcode.js" />
+    <Content Include="scripts\TelemetryClient.js" />
     <Content Include="ThirdPartyNotices.txt" />
     <Content Include="web.config" />
   </ItemGroup>
@@ -72,6 +73,7 @@
     <Content Include="README.md" />
     <Content Include="packages.config" />
     <Content Include="marketplace\mp_terms.md" />
+    <Content Include="scripts\TelemetryClient.js.map" />
     <None Include="Test-vso-print-cards-vsoextensions-almrangers.pubxml" />
   </ItemGroup>
   <PropertyGroup>

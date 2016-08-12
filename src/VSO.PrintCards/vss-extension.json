@@ -19,6 +19,11 @@
       "addressable": true
     },
     {
+      "path": "scripts/TelemetryClient.js",
+      "contentType": "text/javascript",
+      "addressable": true
+    },
+    {
       "path": "scripts/qrcode.js",
       "contentType": "text/javascript",
       "addressable": true

@@ -1,4 +1,7 @@
 # Print Cards
+
+![](https://almrangers.visualstudio.com/DefaultCollection/_apis/public/build/definitions/7f3cfb9a-d1cb-4e66-9d36-1af87b906fe9/89/badge)
+
 ### What
 This extension adds a print option to the backlog which allows you to print the cards for use on a physical scrum board. Print cards have QR Codes used to bridge the physical and digital boards.
 

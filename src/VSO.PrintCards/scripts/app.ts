@@ -19,6 +19,7 @@ import WorkContracts = require("TFS/Work/Contracts");
 import WorkItemTrackingContracts = require("TFS/WorkItemTracking/Contracts");
 import WorkClient = require("TFS/Work/RestClient");
 import TFS_Wit_WebApi = require("TFS/WorkItemTracking/RestClient");
+import TelemetryClient = require("scripts/TelemetryClient");
 
 module canvasCard {
     var lineHeight = 20;
@@ -283,7 +284,9 @@ module AlmRangers.VsoExtensions {
         }
 
         public loadBoard(boardId: string): void {
+            TelemetryClient.TelemetryClient.getClient().trackEvent("loadBoard.Started");
             this.getBoardWorkItems(boardId);
+            TelemetryClient.TelemetryClient.getClient().trackEvent("loadBoard.Done");
         }
 
         private getFieldName(fieldRef: string, fields: Array<WorkItemTrackingContracts.WorkItemField>): string {
@@ -474,7 +477,7 @@ module AlmRangers.VsoExtensions {
             //areas
             var teamFieldQuery = "";
             for (var position in teamFieldValues.values) {
-                if (position > 0) {
+                if (teamFieldQuery.length > 0) {
                     teamFieldQuery = teamFieldQuery + " OR";
                 }
                 teamFieldQuery = teamFieldQuery + " [" + teamFieldValues.field.referenceName + "]";
@@ -539,6 +542,7 @@ module AlmRangers.VsoExtensions {
         }
 
         public appPrint(that: AlmRangers.VsoExtensions.PrintCards): void {
+            TelemetryClient.TelemetryClient.getClient().trackEvent("appPrint.Started");
             window.focus();
             if (navigator.userAgent.indexOf("Trident/") > -1) {
                 /* this disables the shrink to fit thing in IE 11 */
@@ -546,6 +550,7 @@ module AlmRangers.VsoExtensions {
             } else {
                 window.print();
             }
+            TelemetryClient.TelemetryClient.getClient().trackEvent("appPrint.Done");
         }
     }
 }

@@ -45,15 +45,17 @@
     <Content Include="scripts\app.js" />
     <Content Include="images\print-cards-icon.png" />
     <Content Include="index.html" />
+    <Content Include="scripts\lib\ai.0.21.5-build00175.min.js" />
+    <Content Include="scripts\lib\VSS.SDK.js" />
     <Content Include="scripts\main.js" />
     <Content Include="scripts\moment-with-locales.min.js" />
     <Content Include="scripts\qrcode.js" />
-    <Content Include="sdk\scripts\VSS.SDK.js" />
     <Content Include="ThirdPartyNotices.txt" />
     <Content Include="web.config" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="scripts\app.ts" />
+    <TypeScriptCompile Include="scripts\lib\ai.0.21.5-build00175.d.ts" />
     <TypeScriptCompile Include="scripts\ref\jquery.d.ts" />
     <TypeScriptCompile Include="scripts\ref\knockout.d.ts" />
     <TypeScriptCompile Include="scripts\ref\q.d.ts" />
@@ -61,6 +63,7 @@
     <TypeScriptCompile Include="scripts\ref\VSS.d.ts" />
     <TypeScriptCompile Include="scripts\ref\moment-node.d.ts" />
     <TypeScriptCompile Include="scripts\ref\moment.d.ts" />
+    <TypeScriptCompile Include="scripts\TelemetryClient.ts" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="vss-extension.json" />

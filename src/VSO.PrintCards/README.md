@@ -1,4 +1,4 @@
-> NOTE - **This extension has been deprecated as this functionality is now part of [Agile Cards](https://marketplace.visualstudio.com/items?itemName=spartez.agile-cards)**. You can find the latest sample code for Print Cards [here](https://github.com/ALM-Rangers/VSTS-Extension-PrintCards).
+> NOTE - **This extension has been deprecated as this functionality is now part of [Agile Cards](https://marketplace.visualstudio.com/items?itemName=spartez.agile-cards)**. You can find the latest sample code for Print Cards [here](https://github.com/ALM-Rangers/Print-Cards-Extension).
 
 ## Plan and track your work with physical cards ##
 

@@ -42,3 +42,11 @@ When using Edge on a version of Windows 10 before the November 2015 update of Wi
 
 > We thank the following contributor(s) for this extension: Gordon Beeming and Robert MacLean.
 
+## Feedback
+
+We need your feedback! Here are some ways to connect with us:
+
+- Add a review below.
+- Send us an [email](mailto://mktdevlabs@microsoft.com).
+
+Review the [list of features and resolved issues of latest tools and extensions](https://aka.ms/vsarreleases) for information on the latest releases.

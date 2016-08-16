@@ -1,7 +1,7 @@
 {
   "manifestVersion": 1,
   "id": "PrintCards",
-  "version": "",
+  "version": "0.0.0",
   "name": "Print Cards (deprecated)",
   "description": "Print cards from your backlog for use on a physical scrum board.",
   "publisher": "",

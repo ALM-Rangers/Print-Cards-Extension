@@ -348,63 +348,14 @@ module AlmRangers.VsoExtensions {
                                     that.witClient.getFields().then((systemFields) => {
                                         var boardSettingFields = that.getCardFields("*", boardSettings);
 
-                                        that.witClient.getWorkItems(workItemIDs, boardSettingFields).then((workItems) => {
+                                        var loadSpecs = new Array<IPromise<any>>();
+                                        var spliceSize = 100;
+                                        var backlogSection = workItemIDs.splice(0, spliceSize);
 
-                                            that.updateMessageContainer("");
-
-                                            var cardData: Array<cardInfo> = [];
-                                            var largestId = 0;
-                                            for (var position in workItems) {
-                                                var workItem = workItems[position];
-
-                                                var tags = [];
-                                                this.getWorkItemField(workItem, "System.Tags").split(";").forEach(tag => {
-                                                    if (!that.isEmpty(tag)) {
-                                                        tags.push(tag);
-                                                    }
-                                                });
-
-                                                var fields = [];
-                                                var workItemType = this.getWorkItemField(workItem, "System.WorkItemType");
-                                                var extraFields = this.getCardFields(workItemType, boardSettings);
-                                                for (var position in extraFields) {
-                                                    var fieldRef = extraFields[position];
-                                                    if (!this.isCoreField(fieldRef)) {
-                                                        fields.push({
-                                                            title: this.getFieldName(fieldRef, systemFields),
-                                                            value: this.getWorkItemField(workItem, fieldRef)
-                                                        });
-                                                    }
-                                                }
-
-                                                var assigned = this.getWorkItemField(workItem, "System.AssignedTo");
-                                                var id = this.getWorkItemField(workItem, "System.Id");
-                                                var url = workItem.url.substring(0, workItem.url.indexOf("_apis")) + teamContext.project + "/_workitems/edit/" + id;
-
-                                                cardData.push({
-                                                    assignedTo: assigned.substring(0, assigned.indexOf("<")),
-                                                    id: id,
-                                                    title: this.getWorkItemField(workItem, "System.Title"),
-                                                    type: workItemType,
-                                                    fields: fields,
-                                                    tags: tags,
-                                                    cardUrl: url
-                                                });
-
-                                                if (+id > largestId) {
-                                                    largestId = +id;
-                                                }
-                                            }
-
-                                            var firstPassResult = canvasCard.drawCards(cardData, 0, largestId, false);
-                                            var secondPassResult = canvasCard.drawCards(cardData, firstPassResult.maxHeight, largestId, true);
-
-                                            secondPassResult.cards.forEach(card => {
-                                                this.cardsContainer.appendChild(card);
-                                            });
-
-                                            that.showPrintBar();
-                                        });
+                                        while (backlogSection.length > 0) {
+                                            loadSpecs.push(that.GetWorkItemDetails(that, backlogSection, boardSettingFields, boardSettings, systemFields, teamContext));
+                                            var backlogSection = workItemIDs.splice(0, spliceSize);
+                                        }
                                     });
                                 });
                         });
@@ -412,6 +363,71 @@ module AlmRangers.VsoExtensions {
                 });
             });
         }
+
+        private GetWorkItemDetails(that: this, backlogItems: number[], boardSettingFields: string[], boardSettings: WorkContracts.BoardCardSettings, systemFields: WorkItemTrackingContracts.WorkItemField[], teamContext: AppTeamContext): IPromise<any> {
+            var defer = $.Deferred<any>();
+            that.witClient.getWorkItems(backlogItems, boardSettingFields)
+                .then(backlogWorkItems => {
+                    that.updateMessageContainer("");
+                                        
+                    var cardData: Array<cardInfo> = [];
+                    var largestId = 0;
+                    for (var position in backlogWorkItems) {
+                        var workItem = backlogWorkItems[position];
+                                        
+                        var tags = [];
+                        this.getWorkItemField(workItem, "System.Tags").split(";").forEach(tag => {
+                            if (!that.isEmpty(tag)) {
+                                tags.push(tag);
+                            }
+                        });
+                                        
+                        var fields = [];
+                        var workItemType = this.getWorkItemField(workItem, "System.WorkItemType");
+                        var extraFields = this.getCardFields(workItemType, boardSettings);
+                        for (var position in extraFields) {
+                            var fieldRef = extraFields[position];
+                            if (!this.isCoreField(fieldRef)) {
+                                fields.push({
+                                    title: this.getFieldName(fieldRef, systemFields),
+                                    value: this.getWorkItemField(workItem, fieldRef)
+                                });
+                            }
+                        }
+                                        
+                        var assigned = this.getWorkItemField(workItem, "System.AssignedTo");
+                        var id = this.getWorkItemField(workItem, "System.Id");
+                        var url = workItem.url.substring(0, workItem.url.indexOf("_apis")) + teamContext.project + "/_workitems/edit/" + id;
+                                        
+                        cardData.push({
+                            assignedTo: assigned.substring(0, assigned.indexOf("<")),
+                            id: id,
+                            title: this.getWorkItemField(workItem, "System.Title"),
+                            type: workItemType,
+                            fields: fields,
+                            tags: tags,
+                            cardUrl: url
+                        });
+                                        
+                        if (+id > largestId) {
+                            largestId = +id;
+                        }
+                    }
+                                        
+                    var firstPassResult = canvasCard.drawCards(cardData, 0, largestId, false);
+                    var secondPassResult = canvasCard.drawCards(cardData, firstPassResult.maxHeight, largestId, true);
+                                        
+                    secondPassResult.cards.forEach(card => {
+                        this.cardsContainer.appendChild(card);
+                    });
+                                        
+                    that.showPrintBar();
+
+
+                    defer.resolve(backlogWorkItems);
+                });
+            return defer;
+        } 
 
         private isCoreField(fieldRef: string): boolean {
             return this.getCoreFields().indexOf(fieldRef) > -1;

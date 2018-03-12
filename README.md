@@ -51,3 +51,10 @@ Please refer to [Contribution guidelines](.github/CONTRIBUTING.md) and the [Code
     </td>
   </tr>
 </table>
+
+## Data/Telemetry
+This project collects usage data and sends it to Microsoft to help Microsoft improve its products and services. For more information about how Microsoft uses telemetry data, read the Microsoft [privacy statement](http://go.microsoft.com/fwlink/?LinkId=521839). 
+
+This telemetry is used for A|B testing and troubleshooting. 
+
+To turn off telemetry you need to fork this repo, publish, and use your own version of the project without replacing the \_\_InstrumentationKey\_\_ configuration key.

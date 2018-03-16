@@ -14,25 +14,28 @@ export class TelemetryClient {
     private appInsightsClient: Microsoft.ApplicationInsights.AppInsights;
 
     private Init() {
-        try {
-            var snippet: any = {
-                config: {
-                    instrumentationKey: "__INSTRUMENTATIONKEY__"
-                }
-            };
-            var x = VSS.getExtensionContext();
+        // Disabling telemetry for deprecated extension for GDPR
+        this.appInsightsClient = null;
+   
+        //try {
+        //    var snippet: any = {
+        //        config: {
+        //            instrumentationKey: "__INSTRUMENTATIONKEY__"
+        //        }
+        //    };
+        //    var x = VSS.getExtensionContext();
 
-            var init = new Microsoft.ApplicationInsights.Initialization(snippet);
-            this.appInsightsClient = init.loadAppInsights();
+        //    var init = new Microsoft.ApplicationInsights.Initialization(snippet);
+        //    this.appInsightsClient = init.loadAppInsights();
 
-            var webContext = VSS.getWebContext();
-            this.appInsightsClient.setAuthenticatedUserContext(
-                webContext.user.id, webContext.collection.id);
-        }
-        catch (e) {
-            this.appInsightsClient = null;
-            console.log(e);
-        }
+        //    var webContext = VSS.getWebContext();
+        //    this.appInsightsClient.setAuthenticatedUserContext(
+        //        webContext.user.id, webContext.collection.id);
+        //}
+        //catch (e) {
+        //    this.appInsightsClient = null;
+        //    console.log(e);
+        //}
     }
 
     public startTrackPageView(name?: string) {
